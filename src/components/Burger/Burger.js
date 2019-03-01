@@ -11,12 +11,18 @@ import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
  * @param props
  */
 const  burger = (props) => {
+    const updatedIngredients = Object.keys(props.ingredients)
+        .map(ingKey => {
+            /* needed because we have different number of ingredients*/
+            return [...Array(props.ingredients[ingKey])].map((_, i) => {
+                return <BurgerIngredient key={ingKey + i}  type={ingKey} />
+            });
+        });
     return (
         <div className={classes.Burger}>
-            <BurgerIngredient type={"bread-top"}/>
-            <BurgerIngredient type={"cheese"}/>
-            <BurgerIngredient type={"meat"}/>
-            <BurgerIngredient type={"bread-bottom"}/>
+            <BurgerIngredient type="bread-top"/>
+            { updatedIngredients }
+            <BurgerIngredient type="bread-bottom"/>
         </div>
     );
 };
