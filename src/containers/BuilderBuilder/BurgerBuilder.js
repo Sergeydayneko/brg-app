@@ -12,7 +12,7 @@ class BurgerBuilder extends Component {
     /* instead of constructor */
     state = {
         ingredients: {
-            salad: 1,
+            salad: 0,
             bacon: 1,
             cheese: 2,
             meat: 2
