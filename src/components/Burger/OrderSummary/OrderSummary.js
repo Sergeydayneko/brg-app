@@ -1,6 +1,6 @@
 import React from 'react'
 import Aux from "../../../hoc/Aux";
-
+import Button from '../../UI/Button/Button'
 
 /**
  * Burger order desk information component
@@ -29,8 +29,8 @@ const orderSummary = (props) => {
                 { ingredientSummary }
             </ul>
             <p>Continue checkout ?</p>
-            <button>CANCEL</button>
-            <button>CONTINUE</button>
+            <Button btnType = "Danger" clicked = { props.purchaseCanceled } >CANCEL</Button>
+            <Button btnType = "Success" clicked = { props.purchaseContinue }>CONTINUE</Button>
         </Aux>
     )
 
