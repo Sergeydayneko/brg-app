@@ -16,18 +16,31 @@ import React, { Component } from 'react'
  */
 class Layout extends Component {
     state = {
-        showSideDrawer: true
+        showSideDrawer: false
     };
 
     sideDrawerClosedHandler = () => {
         this.setState({showSideDrawer: false})
     };
 
+    /**
+     * Используем через колбэк prevState так как
+     * при прямом переназначении может быть неверный результат
+     * Делаем так всегда, когда берем значение
+     * из предыдущего состояния
+     */
+    sideDrawerToggleHandler = () => {
+        this.setState((prevState) => {
+            return { showSideDrawer: !prevState.showSideDrawer }
+        })
+
+    };
+
     render() {
         return (
             <Aux>
-                <Toolbar />
-                <SideDrawer open = { this.state.showSideDrawer }
+                <Toolbar drawerToggleClicked = { this.sideDrawerToggleHandler } />
+                <SideDrawer open   = { this.state.showSideDrawer }
                             closed = { this.sideDrawerClosedHandler }/>
                 <main className={classes.Content}>
                     { this.props.children }
